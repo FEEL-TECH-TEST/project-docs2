@@ -2,7 +2,7 @@ import os
 import re
 
 DOCS_DIR = "docs"
-OUTPUT_FILE = os.path.join(DOCS_DIR, "index.html")
+OUTPUT_FILE = os.path.abspath("index.html")
 
 # YYYYMMDD(8桁連続数字）パターン)
 date_pattern = re.compile(r"\b\d{8}\b")
@@ -54,3 +54,4 @@ with open(OUTPUT_FILE, "w", encoding="utf-8") as f:
     f.write(html_bottom)
 
 print("index.html generated at root")
+print("OUTPUT:", os.path.abspath(OUTPUT_FILE))
