@@ -50,7 +50,7 @@ with open(OUTPUT_FILE, "w", encoding="utf-8") as f:
     f.write(html_top)
 
     for file in files:
-        f.write(f"<li><a href="{file}">{file}</a></li>\n")
+        f.write(f'<li><a href="{file}">{file}</a></li>\n')
     f.write(html_bottom)
 
 print("index.html generated at root")
