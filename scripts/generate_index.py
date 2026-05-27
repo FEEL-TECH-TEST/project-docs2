@@ -21,7 +21,7 @@ for root, _, filenames in os.walk(DOCS_DIR):
 
         path = os.path.join(root, name)
         rel = os.path.relpath(path, DOCS_DIR)
-        file.append(rel)
+        files.append(rel)
 
 files.sort()
 
