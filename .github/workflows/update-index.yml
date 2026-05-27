@@ -23,6 +23,22 @@ jobs:
 
       - name: Generate index
         run: python scripts/generate_index.py
+      
+      # debug1
+      - name: Debug after generate
+        run: |
+          echo "==== AFTER GENERATE ===="
+          ls -l
+          echo "---- index.html ----"
+          cat index.html || echo "index.html not found"
+
+      # debug2
+      - name: Debug git status
+        run: |
+          echo "==== GIT STATUS ===="
+          git status
+          echo "==== GIT DIFF ===="
+          git diff
 
       - name: Commit and push if changed
         run: |
@@ -30,5 +46,13 @@ jobs:
           git config user.email "github-actions@github.com"
           
           git add index.html
-          git diff --cached --quiet || git commit -m "Update index"
+
+          echo "==== BEFORE COMMIT ===="
+          git status
+
+          git commit -m "Update index" || echo "No changes"
+
+          echo "==== AFTER COMMIT ===="
+          git status
+
           git push
