@@ -5,7 +5,7 @@ DOCS_DIR = "docs"
 OUTPUT_FILE = os.path.abspath("index.html")
 
 # YYYYMMDD(8桁連続数字）パターン)
-date_pattern = re.compile(r"\b\d{8}\b")
+date_pattern = re.compile(r"\d{8}")
 
 files = []
 
