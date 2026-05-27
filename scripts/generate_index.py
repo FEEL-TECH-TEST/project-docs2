@@ -22,13 +22,35 @@ for root, _, filenames in os.walk(DOCS_DIR):
 
 files.sort()
 
-with open(OUTPUT_FILE, "w", encoding="utf-8") as f:
-    f.write("<!DOCTYPE html>\n<html><head><meta charset='UTF-8'><title>Download Files</title></head><body>\n")
-    f.write("<h1>Download Files</h1>\n<ul>\n")
-    
-    for file in files:
-        f.write(f"<li><a href='{file}'>{file}</a></li>\n")
+# テンプレート
+html_top = """<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Download Files</title>
+</head>
+<body>
 
-    f.write("</ul>\n</body></html>")
+<h1>Download Files</h1>
+
+<div>
+<a href="https://hanihatena35-prog.github.io/portal-site/" class="btn" target="_blank">ポータルに戻る</a>
+</div>
+
+<ul>
+"""
+
+html_bottom = """
+
+</body>
+</html>
+"""
+
+with open(OUTPUT_FILE, "w", encoding="utf-8") as f:
+    f.write(html_top)
+
+    for file in files:
+        f.write(f"<li><a href="{file}">{file}</a></li>\n")
+    f.write(html_bottom)
 
 print("index.html generated at root")
