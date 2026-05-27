@@ -7,9 +7,10 @@ OUTPUT_FILE = os.path.join(DOCS_DIR, "index.md")
 # YYYYMMDD(8桁連続数字）パターン)
 date_pattern = re.compile(r"\b\d{8}\b")
 
-file = []
+files = []
+
 for root, _, filenames in os.walk(DOCS_DIR):
-    for filename in filenames:
+    for name in filenames:
         # index自身は除外
         if name == "index.md":
             continue
