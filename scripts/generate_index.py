@@ -18,7 +18,7 @@ releases = rel_res.json()
 if isinstance(releases, list) and len(releases) > 0:
     release_url = releases[0]["html_url"]
     release_tag = releases[0].get("tag_name", "latest")
-    releases_btn = f'<a href="{release_url}" target="_blank">最新リリース ({release_tag})</a>'
+    releases_btn = f'<div><a href="{release_url}" target="_blank">最新リリース ({release_tag})</a></div>'
 
 files = []
 for root, _, filenames in os.walk(DOCS_DIR):
