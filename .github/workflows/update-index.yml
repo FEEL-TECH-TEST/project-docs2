@@ -3,7 +3,7 @@ name: Update docs index
 on:
   push:
     paths:
-      - "docs/**"
+      - "pages/**"
   workflow_dispatch:
 
 jobs:

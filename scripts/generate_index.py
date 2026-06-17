@@ -1,20 +1,12 @@
 import os
-import re
 
-DOCS_DIR = "docs"
+DOCS_DIR = "pages"
 OUTPUT_FILE = os.path.abspath("index.html")
-
-# YYYYMMDD(8桁連続数字）パターン)
-date_pattern = re.compile(r"\d{8}")
 
 files = []
 
 for root, _, filenames in os.walk(DOCS_DIR):
     for name in filenames:
-
-        # YYYYMMDDを含むファイルを除外
-        if date_pattern.search(name):
-            continue
 
         path = os.path.join(root, name)
         rel = os.path.relpath(path, ".")
