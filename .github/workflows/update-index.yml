@@ -22,6 +22,8 @@ jobs:
           python-version: "3.x"
 
       - name: Generate index
+        env:
+          ORG_TOKEN: ${{ secrets.ORG_TOKEN }}
         run: python scripts/generate_index.py
       
       # debug1
