@@ -18,7 +18,7 @@ releases = rel_res.json()
 if isinstance(releases, list) and len(releases) > 0:
     release_url = releases[0]["html_url"]
     release_tag = releases[0].get("tag_name", "latest")
-    releases_btn = f'<a href="{release_url}" class="btn" target="_blank">最新リリース ({release_tag})</a>'
+    releases_btn = f'<a href="{release_url}" target="_blank">最新リリース ({release_tag})</a>'
 
 files = []
 for root, _, filenames in os.walk(DOCS_DIR):
@@ -52,7 +52,6 @@ html_top = f"""<!DOCTYPE html>
 <h1>ファイルダウンロード</h1>
 <div>
 <a href="https://feel-tech-test.github.io/portal-site/" class="btn" target="_blank">ポータルに戻る</a>
-{releases_btn}
 </div>
 <ul>
 """
@@ -66,6 +65,11 @@ with open(OUTPUT_FILE, "w", encoding="utf-8") as f:
     f.write(html_top)
     for file in files:
         f.write(f'<li><a href="{file}">{file}</a></li>\n')
+    # ファイルリストの下にReleasesリンクを追加
+    if releases_btn:
+        f.write(f'</ul>\n{releases_btn}\n')
+    else:
+        f.write(html_bottom)
     f.write(html_bottom)
 
 print("index.html generated at root")
